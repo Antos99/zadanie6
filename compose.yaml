@@ -1,0 +1,29 @@
+services:
+  app:
+    build: .
+    container_name: app
+    ports:
+      - "8080:8080"
+      - "5005:5005"
+    volumes:
+      - ./monitoring_catalog:/var/communications
+    environment:
+      PROCESS_INTERVAL: 10000
+    secrets:
+      - app_secret
+
+  db:
+    image: "postgres"
+    container_name: db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD_FILE: /run/secrets/dp_password_file
+    secrets:
+      - dp_password_file
+
+secrets:
+  app_secret:
+    file: ./secrets.txt
+  dp_password_file:
+    file: db_password
