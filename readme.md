@@ -19,3 +19,6 @@ Database connection details:
 URL: jdbc:postgresql://localhost:5432/postgres<br/>
 username: postgres<br/>
 password: mypassword<br/>
+
+# Monitoring catalog
+Application monitors catalog: ./monitoring_catalog. This can be changed in compose.yaml file
